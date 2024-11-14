@@ -33,9 +33,9 @@ jobs: # jobs [required] - one or more jobs, sequence of tasks (steps)
         with:
           name: target-files
           path: target
-    test:
-      needs: build
-      runs-on: ubuntu-latest
+  test:
+    needs: build
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
@@ -46,9 +46,9 @@ jobs: # jobs [required] - one or more jobs, sequence of tasks (steps)
           cache: maven
       - name: Download artifacts
         uses: actions/download-artifact@v4
-        with: 
+        with:
           name: target-files
-      - name: display structure of downloaded files
+      - name: Display structure of downloaded files
         run: ls -R
       - name: Test with Maven
         run: mvn test
